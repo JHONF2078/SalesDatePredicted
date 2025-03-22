@@ -7,7 +7,7 @@
     ));
 
   @include mat.list-overrides(( //color de fondo cuando esta activo
-      active-indicator-color: orange,
+      active-indicator-color: rgb(106, 91, 241),
       //color de fondo normal
       list-item-container-color: white,
       //color normal del text

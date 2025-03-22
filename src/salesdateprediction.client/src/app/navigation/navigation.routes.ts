@@ -9,7 +9,7 @@ export const NAVIGATION_ROUTES: Routes = [
     children: [
       {
         path: '', // Redirigir a 'home' por defecto
-        redirectTo: 'home',
+        redirectTo: 'orders',
         pathMatch: 'full',
       },
       {
@@ -29,6 +29,12 @@ export const NAVIGATION_ROUTES: Routes = [
         loadComponent: () =>
           import('../orders/components/order-view/order-view.component')
             .then(m => m.OrderViewComponent),
+      },
+      {
+        path: 'graphic-d3', // Asegurar que el path sea accesible desde /
+        loadComponent: () =>
+          import('../graphics/pages/graphic-page.component')
+            .then(m => m.GraphicPageComponent),
       }
     ]
   }

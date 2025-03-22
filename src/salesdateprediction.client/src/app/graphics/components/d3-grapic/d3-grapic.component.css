@@ -1,0 +1,33 @@
+.form-container {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  input {
+    width: 200px;
+    padding: 5px;
+  }
+
+  button {
+    padding: 6px 12px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .error-message {
+    color: red;
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  .input-hint {
+    font-size: 13px;
+    color: #666;
+    margin: 4px 0 8px;
+  }
+
+}
