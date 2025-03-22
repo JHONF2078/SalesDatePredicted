@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Order } from '../interface/order';
+import { ICustomerClients } from '../interface/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -18,29 +19,13 @@ export class OrdersService {
   orders$ = this.ordersSubject.asObservable();
 
   /**
-   * Cargar todas las órdenes desde la API.
-   */
-  loadOrders(): void {
-    this.http.get<Order[]>(this.apiUrl).subscribe(orders => {
-      this.ordersSubject.next(orders);
-    });
-  }
-
-  /**
-   * Obtener todas las órdenes como un observable.
-   */
-  getOrders(): Observable<Order[]> {
-    return this.orders$;
-  }
-
-  /**
    * Obtener órdenes por cliente.
    * @param customerId ID del cliente.
    * @returns Observable con las órdenes del cliente.
    */
-  getOrdersByCustomer(customerId: number): Observable<Order[]> {
+  getOrdersByCustomer(customerId: number): Observable<ICustomerClients[]> {
     const url = `${this.apiUrl}/ByCustomer/${customerId}`;
-    return this.http.get<Order[]>(url);
+    return this.http.get<ICustomerClients[]>(url);
   }
 
   /**

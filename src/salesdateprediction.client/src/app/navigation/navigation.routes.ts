@@ -23,6 +23,12 @@ export const NAVIGATION_ROUTES: Routes = [
         loadComponent: () =>
           import('../orders/pages/sale-date-prediction.component')
             .then(m => m.SaleDatePredictionComponent),
+      },
+      {
+        path: 'customer-orders/:custId', // Asegurar que el path sea accesible desde /
+        loadComponent: () =>
+          import('../orders/components/order-view/order-view.component')
+            .then(m => m.OrderViewComponent),
       }
     ]
   }

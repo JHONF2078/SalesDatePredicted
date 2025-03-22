@@ -33,7 +33,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> </th>
       <td mat-cell *matCellDef="let salesDatePredictions">
-        <button class="text-danger" mat-button>VIEW ORDERS</button>
+        <button class="text-danger" mat-button (click)="viewOrders(salesDatePredictions.custId)">VIEW ORDERS</button>
         <button class="text-success" mat-button (click)="openDialog(salesDatePredictions)">NEW ORDER</button>
       </td>
     </ng-container>

@@ -21,14 +21,3 @@ export interface OrderDetail {
   qty: number;
   discount: number;
 }
-
-
-export interface CustomerClients {
-  orderId: number;
-  requiredDate: Date;
-  shippedDate: Date;
-  shipName: string;
-  shipAddress: string;
-  shipCity: string;
-}
-

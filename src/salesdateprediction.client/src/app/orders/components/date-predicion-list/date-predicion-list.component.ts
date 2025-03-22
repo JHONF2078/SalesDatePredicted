@@ -11,9 +11,11 @@ import { SalesDatePrediction } from '../../interface/orders-date-prediction';
 import { Order } from '../../interface/order';
 import { OrdersService } from '../../service/orders.service';
 import { OrderCreateComponent } from '../order-create/order-create.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-date-predicion-list',
+  standalone: true,
   imports: [CommonModule, ...MATERIAL_IMPORTS],
   templateUrl: './date-predicion-list.component.html',
   styleUrl: './date-predicion-list.component.scss'
@@ -30,40 +32,32 @@ export class DatePredicionListComponent implements OnInit, OnDestroy, AfterViewI
   displayedColumns: string[] = ['companyName', 'lastOrderDate', 'possibleNextOrderDate', 'actions']; // Columnas mostradas en la tabla
 
   constructor(private salesDatePredictedService: SalesDatePredictedService,
-    private ordersService: OrdersService, private dialog: MatDialog) { }
+    private ordersService: OrdersService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.loadSalesDatePredictions(); // Cargar libros al inicializar el componente
+    this.loadSalesDatePredictions();
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.unsubscribe(); // Liberar la suscripción
+    this.subscriptions.unsubscribe();
   }
 
   applyFilter(value: string) {
-    this.dataSource.filter = value.trim().toLowerCase(); // Aplicar filtro a la tabla
+    this.dataSource.filter = value.trim().toLowerCase();
   }
 
   ngAfterViewInit() {
-    this.dataSource.sort = this.order; // Asignar ordenación a la tabla
-    this.dataSource.paginator = this.pagination; // Asignar paginación a la tabla
+    this.dataSource.sort = this.order;
+    this.dataSource.paginator = this.pagination;
   }
 
   loadSalesDatePredictions(): void {
     const SalesDatePredictionsSubscription = this.salesDatePredictedService.getSalesDatePredictions().subscribe(SalesDatePredictions => {
-      this.dataSource.data = SalesDatePredictions; // Asignar datos de libros a la tabla
+      this.dataSource.data = SalesDatePredictions;
     });
 
     this.subscriptions.add(SalesDatePredictionsSubscription);
   }
-
-  // loadOrders(): void {
-  //   const SalesDatePredictionsSubscription = this.ordersService.getOrders().subscribe(ordersService => {
-  //     this.dataSource.data = ordersService; // Asignar datos de libros a la tabla
-  //   });
-
-  //   this.subscriptions.add(SalesDatePredictionsSubscription);
-  // }
 
   openDialog(salesDatePrediction?: SalesDatePrediction, order?: Order): void {
     const dialogRef = this.dialog.open(OrderCreateComponent, {
@@ -90,6 +84,11 @@ export class DatePredicionListComponent implements OnInit, OnDestroy, AfterViewI
     });
 
     this.subscriptions.add(dialogSubscription);
+  }
+
+
+  viewOrders(custId: number): void {
+    this.router.navigate(['/customer-orders', custId]); // Redirige a la ruta /orders/{custId}
   }
 
 }
