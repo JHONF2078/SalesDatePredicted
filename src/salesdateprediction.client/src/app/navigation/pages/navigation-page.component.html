@@ -1,0 +1,16 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- Menú lateral -->
+  <mat-sidenav #sidenav [mode]="isMobile ? 'over' : 'side'" opened="true">
+    <app-menu (closeMenu)="closeSidenav()"></app-menu>
+  </mat-sidenav>
+
+  <!-- Contenido principal -->
+  <mat-sidenav-content>
+    <app-header (toggleMenu)="sidenav.toggle()"></app-header>
+    <div class="main-content">
+      <!-- Asegúrate de que el router-outlet esté presente -->
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

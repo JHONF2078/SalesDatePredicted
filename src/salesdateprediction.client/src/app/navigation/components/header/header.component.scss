@@ -1,0 +1,41 @@
+mat-toolbar {
+  display: flex;
+  /* Utiliza flexbox para el diseño del toolbar */
+  align-items: center;
+  /* Alinea los elementos al centro verticalmente */
+  padding: 0 20px;
+  /* Añade un padding horizontal de 20px */
+  height: 64px;
+  /* Establece la altura del toolbar a 64px */
+}
+
+.spacer {
+  flex: 1;
+  /* Ocupa el espacio restante disponible */
+}
+
+.nav-links {
+  display: flex;
+  /* Utiliza flexbox para el diseño de los enlaces de navegación */
+  gap: 16px;
+  /* Añade un espacio de 16px entre los enlaces */
+  /* Espaciado entre los enlaces */
+}
+
+/* Ocultar el menú desplegable en pantallas grandes */
+.mobile-menu {
+  display: none;
+}
+
+/* En pantallas pequeñas, ocultar los enlaces y mostrar el menú desplegable */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    /* Oculta los enlaces de navegación en pantallas pequeñas */
+  }
+
+  .mobile-menu {
+    display: flex;
+    /* Muestra el menú desplegable en pantallas pequeñas */
+  }
+}

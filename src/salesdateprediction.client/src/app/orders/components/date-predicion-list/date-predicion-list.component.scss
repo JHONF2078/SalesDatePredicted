@@ -1,0 +1,64 @@
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.item-container-start {
+  flex: 1;
+}
+
+.item-container-end {
+  flex: 2;
+  display: flex;
+  justify-content: flex-end;
+  /* Para alinear el input a la derecha */
+}
+
+.item-container-end mat-form-field {
+  width: 90%;
+}
+
+/* Container for the search books section */
+// .searchBooks {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   /* Align content to the right */
+//   width: 80%;
+// }
+
+/* Contenedor del botón para alinearlo a la derecha */
+// .button-container {
+//   display: flex;
+//   justify-content: flex-end;
+//   /* Align button to the right */
+//   margin-top: 10px;
+//   margin-left: 10px;
+//   /* Adjust margin to the left */
+// }
+
+/* Estilo del botón */
+#add_button {
+  position: relative;
+  right: 0;
+  /* Align button to the right */
+  bottom: 0;
+  margin: 10px;
+}
+
+/* Contenedor de la tabla para mantener su estructura */
+.table-container {
+  width: 100%;
+}
+
+::ng-deep .code-icon .mat-icon {
+  color: rgb(235, 67, 67);
+  /* Cambia por el color que quieras */
+}
+
+mat-form-field input {
+  color: white;
+  /* o pon un color específico */
+}

@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  @include mat.toolbar-overrides((container-background-color:rgb(15, 15, 15),
+      container-text-color: rgb(255, 254, 254),
+    ));
+
+  @include mat.list-overrides(( //color de fondo cuando esta activo
+      active-indicator-color: orange,
+      //color de fondo normal
+      list-item-container-color: white,
+      //color normal del text
+      list-item-label-text-color: black,
+      //color de letrar cuando nos uicamos encima
+      list-item-hover-label-text-color: red,
+      //color de fondo cuando nos uicamos encima
+      list-item-hover-state-layer-color: blue,
+    ));
+
+  @include mat.form-field-overrides((filled-caret-color: orange,
+      filled-focus-active-indicator-color: rgb(255, 72, 0),
+      filled-container-color:#f8f9fa));
+
+}

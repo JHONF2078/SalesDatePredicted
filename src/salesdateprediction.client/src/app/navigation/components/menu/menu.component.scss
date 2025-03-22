@@ -1,0 +1,82 @@
+mat-nav-list {
+  display: flex;
+  flex-direction: column;
+  /* Los elementos se organizan en columna */
+  height: 100vh;
+  /* Ocupa toda la altura de la pantalla */
+  padding: 5px;
+  /* Espaciado interno del contenedor */
+  width: 100%;
+  /* Ancho completo del contenedor */
+}
+
+.spacer {
+  flex-grow: 0.02;
+  /* Hace que este div ocupe todo el espacio disponible y empuje los últimos elementos hacia abajo */
+}
+
+a.mat-list-item {
+  display: flex;
+  /* Usar flexbox para el diseño */
+  align-items: center;
+  /* Alinear elementos verticalmente al centro */
+  gap: 12px;
+  /* Espaciado uniforme entre icono y texto */
+  padding: 10px;
+  /* Espaciado interno del enlace */
+  font-size: 16px;
+  /* Tamaño de fuente del texto */
+  color: #424242;
+  /* Color del texto */
+  transition: background 0.3s, color 0.3s;
+  /* Transición suave para el fondo y color */
+  text-decoration: none;
+  /* Sin subrayado en el texto */
+  white-space: nowrap;
+  /* Evita que el texto haga un salto de línea */
+}
+
+/* Ajuste preciso en el icono */
+a.mat-list-item mat-icon {
+  font-size: 22px;
+  /* Tamaño del icono */
+  width: 24px;
+  /* Ancho del icono */
+  height: 24px;
+  /* Altura del icono */
+  display: flex;
+  /* Usar flexbox para el diseño del icono */
+  align-items: center;
+  /* Alinear icono verticalmente al centro */
+  justify-content: center;
+  /* Alinear icono horizontalmente al centro */
+  flex-shrink: 0;
+  /* Evita que el ícono cambie de tamaño */
+  line-height: normal;
+  /* Asegurar que el icono no tenga diferencias de altura */
+}
+
+/* Ajuste del texto */
+a.mat-list-item label {
+  flex-grow: 1;
+  /* Permite que el texto se expanda correctamente */
+  display: flex;
+  /* Usar flexbox para el diseño del texto */
+  align-items: center;
+  /* Alinear texto verticalmente al centro */
+  white-space: nowrap;
+  /* Evita que el texto haga un salto de línea */
+  line-height: normal;
+  /* Evita que el texto tenga más altura que el icono */
+  height: 24px;
+  /* Igualar la altura al icono */
+}
+
+.menu-text {
+  display: inline-block;
+  /* Mostrar como un bloque en línea */
+  padding-bottom: 9px;
+  /* Espaciado inferior del texto */
+  vertical-align: middle;
+  /* Alinear verticalmente al medio */
+}

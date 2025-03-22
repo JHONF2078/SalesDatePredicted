@@ -1,0 +1,110 @@
+/* === CONTENEDOR PRINCIPAL DEL FORMULARIO === */
+.form-dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  max-width: 700px;
+  box-sizing: border-box;
+}
+
+/* === SECCIONES DE FORMULARIO (ORDER, ORDER DETAILS) === */
+.form-section {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    color: #444;
+  }
+}
+
+/* === DISTRIBUCIÓN EN COLUMNAS POR FILA === */
+.form-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-row.two-columns>mat-form-field {
+  flex: 1 1 50%;
+}
+
+.form-row.three-columns>mat-form-field {
+  flex: 1 1 33.33%;
+}
+
+.form-row.single-column>mat-form-field,
+.full-width {
+  width: 100%;
+}
+
+/* === ESTILO LIMPIO DE CAMPOS (SIN BORDES / FONDOS) === */
+mat-form-field {
+  width: 100%;
+  background-color: transparent !important;
+}
+
+/* Oculta los bordes de outline */
+mat-form-field.mat-form-field-appearance-outline .mat-form-field-outline,
+mat-form-field.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+  display: none !important;
+  border: none !important;
+}
+
+/* Sin sombra o borde al enfocar */
+mat-form-field.mat-form-field-appearance-outline .mat-form-field-flex {
+  box-shadow: none !important;
+}
+
+/* Elimina padding y fondo interno */
+mat-form-field.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 8px 0;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* Quitar ripple y fondo de inputs y selects */
+input.mat-input-element,
+.mat-select-trigger {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Etiquetas limpias */
+mat-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+}
+
+/* === BOTONES AL PIE DEL DIÁLOGO === */
+mat-dialog-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+button.mat-raised-button {
+  padding: 0.5rem 1.5rem;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+
+/* Evita scroll lateral innecesario */
+::ng-deep .mat-dialog-container {
+  overflow-x: hidden !important;
+  max-width: 100vw;
+  box-sizing: border-box;
+}

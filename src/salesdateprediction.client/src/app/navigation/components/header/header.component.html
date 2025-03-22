@@ -1,0 +1,32 @@
+<!-- mat-toolbar es un componente de Angular Material que se utiliza
+para crear barras de herramientas. Proporciona una barra de herramientas que puede
+contener títulos, botones de navegación, iconos y otros elementos de interfaz
+de usuario. Aquí tienes un ejemplo básico de cómo se usa: -->
+<mat-toolbar color="primary">
+  <!-- Botón de menú para móviles -->
+  <button mat-icon-button (click)="toggleMenu.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span>Sales Date Prediction App</span>
+
+  <span class="spacer"></span>
+  <button mat-icon-button class="code-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>recommend</mat-icon>
+  </button>
+
+  <!-- Menú en pantallas pequeñas -->
+  <button mat-icon-button [matMenuTriggerFor]="mobileMenu" class="mobile-menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <!-- #mobileMenu="matMenu": Crea una referencia local llamada mobileMenu que
+    apunta al componente matMenu, la referencia se usa en el en css -->
+  <mat-menu #mobileMenu="matMenu">
+
+  </mat-menu>
+
+  <!-- Enlaces de navegación en pantallas grandes -->
+  <nav class="nav-links">
+
+  </nav>
+</mat-toolbar>

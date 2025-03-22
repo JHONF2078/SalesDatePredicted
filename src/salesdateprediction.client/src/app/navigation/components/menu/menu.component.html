@@ -1,0 +1,25 @@
+<mat-nav-list>
+  <mat-list-item [activated]="isActive('/home')">
+    <a mat-list-item routerLink="/home" (click)="handleClick()">
+      <mat-icon>home</mat-icon>
+      <label class="menu-text">Inicio</label>
+    </a>
+  </mat-list-item>
+  <mat-list-item [activated]="isActive('/orders')">
+    <!-- Asegúrate de que routerLink sea correcto -->
+    <a mat-list-item routerLink="/orders" (click)="handleClick()">
+      <mat-icon>menu_book</mat-icon>
+      <label class="menu-text">Orders</label>
+    </a>
+  </mat-list-item>
+  <!--Agrega un div espaciador -->
+  <div class="spacer">
+    <hr>
+  </div>
+  <mat-list-item [activated]="isActive('/language')">
+    <a mat-list-item routerLink="/language" (click)="handleClick()">
+      <mat-icon>language</mat-icon>
+      <label class="menu-text">Idioma</label>
+    </a>
+  </mat-list-item>
+</mat-nav-list>

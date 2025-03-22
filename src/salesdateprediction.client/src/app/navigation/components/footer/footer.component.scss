@@ -1,0 +1,21 @@
+/* Estilo para el pie de página */
+.footer {
+  text-align: center;
+  /* Centra el texto */
+  padding: 10px;
+  /* Añade un relleno de 10px */
+  font-size: 14px;
+  /* Tamaño de fuente de 14px */
+  background-color: #3d3c3c;
+  /* Color de fondo azul */
+  color: white;
+  /* Color del texto blanco */
+}
+
+/* Estilos para pantallas con un ancho máximo de 768px */
+@media (max-width: 768px) {
+  .footer {
+    font-size: 12px;
+    /* Tamaño de fuente de 12px */
+  }
+}

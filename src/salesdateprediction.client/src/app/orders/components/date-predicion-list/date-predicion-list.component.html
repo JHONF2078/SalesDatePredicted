@@ -1,0 +1,56 @@
+<div class="main-container">
+  <div class="item-container-start">
+    <h4>CUSTOMER</h4>
+  </div>
+  <div class="item-container-end">
+    <mat-form-field appearance="outline">
+      <input matInput type="text" placeholder="Customer Name" #input (keyup)="applyFilter(input.value)">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+</div>
+
+<!-- Contenedor para la tabla y el botón -->
+<div class="table-container">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <ng-container matColumnDef="companyName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+      <td mat-cell *matCellDef="let salesDatePredictions"> {{salesDatePredictions.companyName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastOrderDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Last Order Date </th>
+      <td mat-cell *matCellDef="let salesDatePredictions"> {{salesDatePredictions.lastOrderDate | date: 'MM/dd/yyyy'}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="possibleNextOrderDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Next Predicted Order </th>
+      <td mat-cell *matCellDef="let salesDatePredictions"> {{salesDatePredictions.possibleNextOrderDate | date:
+        'MM/dd/yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> </th>
+      <td mat-cell *matCellDef="let salesDatePredictions">
+        <button class="text-danger" mat-button>VIEW ORDERS</button>
+        <button class="text-success" mat-button (click)="openDialog(salesDatePredictions)">NEW ORDER</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+  </mat-paginator>
+
+</div>
+
+
+<!-- <div class="item-container-end">
+  <button mat-fab id="add_button" color="primary">
+    <mat-icon>add</mat-icon>
+  </button>
+</div> -->
