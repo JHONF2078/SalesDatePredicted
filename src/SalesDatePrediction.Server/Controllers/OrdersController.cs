@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SalesDatePrediction.Application.Orders.Queries;
 using SalesDatePrediction.Domain.Entities;
 using SalesDatePrediction.Application.Orders.Queries.DTOs;
+using SalesDatePrediction.Application.Orders.Commands.DTOs;
 
 namespace SalesDatePrediction.Api.Controllers
 {
@@ -28,36 +29,10 @@ namespace SalesDatePrediction.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateOrder([FromBody] CreateOrderCommand command)
+        public async Task<ActionResult<OrderWithDetailsDto>> CreateOrder([FromBody] CreateOrderCommand command)
         {
-            var orderId = await _mediator.Send(command);
-            return Ok(orderId);
+            var orderWithDetails = await _mediator.Send(command);
+            return Ok(orderWithDetails);
         }
-
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> UpdateOrder(int id, [FromBody] UpdateOrderCommand command)
-        //{
-        //    if (id != command.OrderId)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    await _mediator.Send(command);
-        //    return NoContent();
-        //}
-
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteOrder(int id)
-        //{
-        //    await _mediator.Send(new DeleteOrderCommand(id));
-        //    return NoContent();
-        //}
-
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetOrderById(int id)
-        //{
-        //    // Implementar lógica de consulta
-        //    return Ok();
-        //}
     }
 }

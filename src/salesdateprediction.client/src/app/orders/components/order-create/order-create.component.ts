@@ -81,9 +81,34 @@ export class OrderCreateComponent {
 
   save(): void {
     if (this.orderForm.valid) {
-      this.dialogRef.close(this.orderForm.value);
+      const formValue = this.orderForm.value;
+
+      // Transformar los datos al formato esperado por la API
+      const transformedOrder = {
+        custId: this.data.salesDatePrediction?.custId || 0, // Obtener el ID del cliente si está disponible
+        empId: formValue.empId,
+        orderDate: formValue.orderDate,
+        requiredDate: formValue.requiredDate,
+        shippedDate: formValue.shippedDate,
+        shipperId: formValue.shipperId,
+        freight: formValue.freight,
+        shipName: formValue.shipName,
+        shipAddress: formValue.shipAddress,
+        shipCity: formValue.shipCity,
+        shipCountry: formValue.shipCountry,
+        orderDetail: {
+          productId: formValue.product,
+          unitPrice: formValue.unitPrice,
+          qty: formValue.qty,
+          discount: formValue.discount
+        }
+      };
+
+      // Cerrar el diálogo y devolver los datos transformados
+      this.dialogRef.close(transformedOrder);
+    } else {
+      console.error('Formulario inválido:', this.orderForm.errors);
     }
-    // Método 'save' que cierra el diálogo y retorna los valores del formulario si es válido.
   }
 
   onCancel(): void {

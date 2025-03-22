@@ -76,12 +76,19 @@ export class DatePredicionListComponent implements OnInit, OnDestroy, AfterViewI
       restoreFocus: true
     });
 
-    const dialogSubscription = dialogRef.afterClosed().subscribe((result: Order) => {
+    const dialogSubscription = dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        const addSubscription = this.ordersService.addOrder(result).subscribe(() => this.loadSalesDatePredictions());
+        console.log('Datos transformados enviados al servicio:', result);
+
+        // Llamar al servicio para guardar la orden
+        const addSubscription = this.ordersService.addOrder(result).subscribe(() => {
+          this.loadSalesDatePredictions(); // Recargar la lista después de guardar
+        });
+
         this.subscriptions.add(addSubscription);
       }
     });
+
     this.subscriptions.add(dialogSubscription);
   }
 
