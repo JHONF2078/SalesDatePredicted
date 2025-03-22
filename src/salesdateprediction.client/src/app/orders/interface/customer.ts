@@ -1,5 +1,5 @@
 
-export interface ICustomerClients {
+export interface ICustomerOrders {
   orderId: number;
   requiredDate: Date;
   shippedDate: Date;

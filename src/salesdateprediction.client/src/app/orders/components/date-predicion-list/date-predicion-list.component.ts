@@ -12,6 +12,9 @@ import { Order } from '../../interface/order';
 import { OrdersService } from '../../service/orders.service';
 import { OrderCreateComponent } from '../order-create/order-create.component';
 import { Router } from '@angular/router';
+import { ICustomerOrders } from '../../interface/customer';
+import { OrderViewComponent } from '../order-view/order-view.component';
+
 
 @Component({
   selector: 'app-date-predicion-list',
@@ -87,8 +90,33 @@ export class DatePredicionListComponent implements OnInit, OnDestroy, AfterViewI
   }
 
 
-  viewOrders(custId: number): void {
-    this.router.navigate(['/customer-orders', custId]); // Redirige a la ruta /orders/{custId}
+  openDialogView(salesDatePrediction?: SalesDatePrediction, customerOrders?: ICustomerOrders): void {
+    const dialogRef = this.dialog.open(OrderViewComponent, {
+      width: '900px',
+      maxWidth: 'none', // <- agrega esto
+      data: {
+        customerOrders: customerOrders || {},
+        salesDatePrediction: salesDatePrediction || {}
+      },
+      autoFocus: true,
+      restoreFocus: true
+    });
+
+    const dialogSubscription = dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        console.log('Datos transformados enviados al servicio:', result);
+
+        // Llamar al servicio para guardar la orden
+        const addSubscription = this.ordersService.addOrder(result).subscribe(() => {
+          this.loadSalesDatePredictions(); // Recargar la lista después de guardar
+        });
+
+        this.subscriptions.add(addSubscription);
+      }
+    });
+
+    this.subscriptions.add(dialogSubscription);
   }
+
 
 }

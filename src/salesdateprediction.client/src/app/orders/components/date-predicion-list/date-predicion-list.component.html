@@ -3,7 +3,7 @@
     <h4>CUSTOMER</h4>
   </div>
   <div class="item-container-end">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="fill">
       <input matInput type="text" placeholder="Customer Name" #input (keyup)="applyFilter(input.value)">
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
@@ -33,7 +33,8 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef> </th>
       <td mat-cell *matCellDef="let salesDatePredictions">
-        <button class="text-danger" mat-button (click)="viewOrders(salesDatePredictions.custId)">VIEW ORDERS</button>
+        <button class="text-danger" mat-button (click)="openDialogView(salesDatePredictions)">VIEW
+          ORDERS</button>
         <button class="text-success" mat-button (click)="openDialog(salesDatePredictions)">NEW ORDER</button>
       </td>
     </ng-container>

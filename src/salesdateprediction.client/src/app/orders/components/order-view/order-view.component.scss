@@ -1,0 +1,37 @@
+.table-container {
+  max-height: 60vh; // o ajusta según necesidad
+  overflow: auto;
+}
+
+.full-width {
+  width: 100%;
+}
+
+mat-form-field {
+  min-width: 250px;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+}
+
+::ng-deep .mat-paginator {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .main-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

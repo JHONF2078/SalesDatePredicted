@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Order } from '../interface/order';
-import { ICustomerClients } from '../interface/customer';
+import { ICustomerOrders } from '../interface/customer';
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +23,9 @@ export class OrdersService {
    * @param customerId ID del cliente.
    * @returns Observable con las órdenes del cliente.
    */
-  getOrdersByCustomer(customerId: number): Observable<ICustomerClients[]> {
+  getOrdersByCustomer(customerId: number): Observable<ICustomerOrders[]> {
     const url = `${this.apiUrl}/ByCustomer/${customerId}`;
-    return this.http.get<ICustomerClients[]>(url);
+    return this.http.get<ICustomerOrders[]>(url);
   }
 
   /**
