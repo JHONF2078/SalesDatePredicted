@@ -22,4 +22,8 @@
       filled-focus-active-indicator-color: rgb(255, 72, 0),
       filled-container-color:#f8f9fa));
 
+  @include mat.snack-bar-overrides((container-color: rgb(184, 234, 250),
+      supporting-text-color: rgb(7, 7, 7),
+    ));
+
 }

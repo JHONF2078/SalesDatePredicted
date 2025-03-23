@@ -101,6 +101,10 @@ button.mat-raised-button {
   border-radius: 4px;
 }
 
+/* Estilo para botones deshabilitados */
+button[disabled] {
+  color: rgb(207, 206, 206) !important;
+}
 
 /* Evita scroll lateral innecesario */
 ::ng-deep .mat-dialog-container {

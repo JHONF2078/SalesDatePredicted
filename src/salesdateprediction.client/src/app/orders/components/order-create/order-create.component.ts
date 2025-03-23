@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { Order } from '../../interface/order';
 import { OrdersService } from '../../service/orders.service';
@@ -10,6 +10,7 @@ import { EmployeesService } from '../../service/employees.service';
 import { ShippersService } from '../../service/shippers.service';
 import { ProductsService } from '../../service/products.service';
 import { SalesDatePrediction } from '../../interface/orders-date-prediction';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-order-create',
@@ -35,30 +36,42 @@ export class OrderCreateComponent {
     private orderService: OrdersService,
     private employeesService: EmployeesService,
     private shippersService: ShippersService,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private snackBar: MatSnackBar
   ) {
 
     this.customerName = data?.salesDatePrediction?.companyName;
 
     this.orderForm = this.fb.group({
-      empId: [data?.order?.empId || '', Validators.required],
-      shipperId: [data?.order?.shipperId || '', Validators.required],
-      shipName: [data?.order?.shipName || ''],
-      shipAddress: [data?.order?.shipAddress || ''],
-      shipCity: [data?.order?.shipCity || ''],
-      shipCountry: [data?.order?.shipCountry || ''],
-      orderDate: [data?.order?.orderDate || '', Validators.required],
-      requiredDate: [data?.order?.requiredDate || '', Validators.required],
-      shippedDate: [data?.order?.shippedDate || '', Validators.required],
-      freight: [data?.order?.freight || 0, Validators.required],
-      product: [data?.order?.orderDetail?.productId || '', Validators.required],
-      unitPrice: [data?.order?.orderDetail?.unitPrice || 0, Validators.required],
-      qty: [data?.order?.orderDetail?.qty || 0, Validators.required],
-      discount: [data?.order?.orderDetail?.discount || 0, Validators.required],
+      empId: [data?.order?.empId || '', [Validators.required]],
+      shipperId: [data?.order?.shipperId || '', [Validators.required]],
+      shipName: [data?.order?.shipName || '', [Validators.required]],
+      shipAddress: [data?.order?.shipAddress || '', [Validators.required]],
+      shipCity: [data?.order?.shipCity || '', [Validators.required]],
+      shipCountry: [data?.order?.shipCountry || '', [Validators.required]],
+      orderDate: [data?.order?.orderDate || '', [Validators.required]],
+      requiredDate: [data?.order?.requiredDate || '', [Validators.required]],
+      shippedDate: [data?.order?.shippedDate || '', [Validators.required]],
+      freight: [
+        data?.order?.freight || 0,
+        [Validators.required, Validators.min(0)]
+      ],
+      product: [data?.order?.orderDetail?.productId || '', [Validators.required]],
+      unitPrice: [
+        data?.order?.orderDetail?.unitPrice || 0,
+        [Validators.required, Validators.min(0.01)]
+      ],
+      qty: [
+        data?.order?.orderDetail?.qty || 0,
+        [Validators.required, Validators.min(1)]
+      ],
+      discount: [
+        data?.order?.orderDetail?.discount || 0,
+        [Validators.required, discountRangeValidator]
+      ],
     });
 
   }
-
 
   ngOnInit() {
     this.employeesService.getEmployees().subscribe(employees => {
@@ -104,6 +117,15 @@ export class OrderCreateComponent {
         }
       };
 
+      this.dialogRef.close(transformedOrder);
+
+
+      this.snackBar.open('Order saved successfully!', 'Close', {
+        duration: 3000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });
+
       // Cerrar el diálogo y devolver los datos transformados
       this.dialogRef.close(transformedOrder);
     } else {
@@ -115,4 +137,9 @@ export class OrderCreateComponent {
     this.dialogRef.close();
     // Método 'onCancel' que cierra el diálogo sin retornar valores.
   }
+}
+
+function discountRangeValidator(control: AbstractControl): ValidationErrors | null {
+  const value = control.value;
+  return (value >= 0 && value <= 1) ? null : { discountRange: true };
 }

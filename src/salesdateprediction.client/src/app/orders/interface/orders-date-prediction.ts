@@ -1,5 +1,5 @@
 export interface SalesDatePrediction {
-  custId: Number;
+  custId: number;
   companyName: string;
   lastOrderDate?: Date;
   possibleNextOrderDate?: Date;

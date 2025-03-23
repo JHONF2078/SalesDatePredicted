@@ -15,7 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 export const MATERIAL_IMPORTS = [
   MatSidenavModule,
@@ -34,5 +34,6 @@ export const MATERIAL_IMPORTS = [
   MatDatepickerModule,
   MatSelectModule,
   MatNativeDateModule,
-  FormsModule
+  FormsModule,
+  MatSnackBarModule
 ];

@@ -22,6 +22,7 @@ export class OrderViewComponent {
   private subscriptions: Subscription = new Subscription();
   public dataSource = new MatTableDataSource<ICustomerOrders>();
   customerName: string = '';
+  custId: number = 0;
 
   @ViewChild(MatSort) order!: MatSort;
   @ViewChild(MatPaginator) pagination!: MatPaginator;
@@ -34,6 +35,7 @@ export class OrderViewComponent {
     private ordersService: OrdersService,
     private router: Router) {
     this.customerName = data?.salesDatePrediction?.companyName;
+    this.custId = data?.salesDatePrediction?.custId;
   }
 
   ngOnInit(): void {
@@ -54,7 +56,7 @@ export class OrderViewComponent {
   }
 
   loadOrdersByCustomer(): void {
-    const CustomerOrdersSubscription = this.ordersService.getOrdersByCustomer(79).subscribe(ICustomerClients => {
+    const CustomerOrdersSubscription = this.ordersService.getOrdersByCustomer(this.custId).subscribe(ICustomerClients => {
       this.dataSource.data = ICustomerClients;
     });
 
