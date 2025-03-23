@@ -25,7 +25,7 @@ Esta aplicacion permite visualizar clientes con información de órdenes, predec
 4. Ejecutar la solución (`F5` o botón "Start").
 
 
-> **Alternativamente**, se puede configurar el proyecto como proyecto de inicio SalesDatePrediction.Server y ejecutar  la parte de Angular desde consola con:
+> **Alternativamente**, se puede configurar el proyecto SalesDatePrediction.Server como proyecto de inicio y ejecutar  la parte de Angular desde consola con:
 >
 > ```bash
 > cd salesdateprediction.client
