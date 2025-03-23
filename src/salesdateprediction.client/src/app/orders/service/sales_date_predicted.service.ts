@@ -25,6 +25,17 @@ export class SalesDatePredictedService {
     });
   }
 
+  /**
+   * Buscar predicciones de ventas por nombre de cliente.
+   * @param customerName Nombre del cliente.
+   * @returns Observable con las predicciones filtradas.
+   */
+  searchSalesDatePredictions(companyName: string): Observable<SalesDatePrediction[]> {
+    console.log(companyName);
+    const url = `${this.apiUrl}?companyName=${encodeURIComponent(companyName)}`;
+    return this.http.get<SalesDatePrediction[]>(url);
+  }
+
   getSalesDatePredictions(): Observable<SalesDatePrediction[]> {
     return this.ListSalesDatePredictions$; // Se retorna directamente sin redundancias
   }

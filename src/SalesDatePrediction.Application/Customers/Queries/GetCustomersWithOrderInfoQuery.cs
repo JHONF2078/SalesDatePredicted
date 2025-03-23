@@ -4,5 +4,5 @@ using System.Collections.Generic;
 
 namespace SalesDatePrediction.Application.Customers.Queries
 {
-    public record GetCustomersWithOrderInfoQuery() : IRequest<List<CustomerDto>>;
+    public record GetCustomersWithOrderInfoQuery(string? CompanyName) : IRequest<List<CustomerDto>>;
 }

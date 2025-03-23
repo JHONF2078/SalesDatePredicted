@@ -10,7 +10,7 @@ import { ICustomerOrders } from '../interface/customer';
 })
 export class OrdersService {
 
-  private apiUrl = `${environment.apiUrl}/Orders`; // URL base obtenida de environment
+  private apiUrl = `${environment.apiUrl}/Orders`;
 
   constructor(private http: HttpClient) { }
 
@@ -27,6 +27,7 @@ export class OrdersService {
     const url = `${this.apiUrl}/ByCustomer/${customerId}`;
     return this.http.get<ICustomerOrders[]>(url);
   }
+
 
   /**
    * Agregar una nueva orden.

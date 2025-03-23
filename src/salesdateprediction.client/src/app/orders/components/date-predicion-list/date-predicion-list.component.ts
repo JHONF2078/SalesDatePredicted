@@ -45,8 +45,18 @@ export class DatePredicionListComponent implements OnInit, OnDestroy, AfterViewI
     this.subscriptions.unsubscribe();
   }
 
-  applyFilter(value: string) {
-    this.dataSource.filter = value.trim().toLowerCase();
+  applyFilter(value: string): void {
+    if (value.trim() === '') {
+      this.loadSalesDatePredictions(); // Si el campo está vacío, recarga todos los datos
+      return;
+    }
+
+    const searchSubscription = this.salesDatePredictedService.searchSalesDatePredictions(value.trim())
+      .subscribe(filteredPredictions => {
+        this.dataSource.data = filteredPredictions; // Actualiza la tabla con los resultados filtrados
+      });
+
+    this.subscriptions.add(searchSubscription);
   }
 
   ngAfterViewInit() {

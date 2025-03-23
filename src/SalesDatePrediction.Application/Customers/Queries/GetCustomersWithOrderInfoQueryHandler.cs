@@ -20,7 +20,12 @@ namespace SalesDatePrediction.Application.Customers.Queries
 
         public async Task<List<CustomerDto>> Handle(GetCustomersWithOrderInfoQuery request, CancellationToken cancellationToken)
         {
-            return await _customerRepository.GetCustomerOrderInfoAsync();
+            var customers = await _customerRepository.GetCustomerOrderInfoAsync();
+            if (!string.IsNullOrEmpty(request.CompanyName))
+            {
+                customers = customers.Where(c => c.CompanyName.Contains(request.CompanyName)).ToList();
+            }
+            return customers;
         }
     }
 }
