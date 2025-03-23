@@ -27,8 +27,8 @@ namespace SalesDatePrediction.Tests.handlers
             var companyName = "AHPOP";
             var customers = new List<CustomerDto>
             {
-                new CustomerDto { CustId = 1, CompanyName = "Customer AHPOP" },
-                new CustomerDto { CustId = 2, CompanyName = "Customer Other" }
+                new CustomerDto { CustId = 1, CustomerName = "Customer AHPOP" },
+                new CustomerDto { CustId = 2, CustomerName = "Customer Other" }
             };
 
             _customerRepositoryMock
@@ -42,7 +42,7 @@ namespace SalesDatePrediction.Tests.handlers
 
             // Assert
             Assert.Single(result);
-            Assert.Contains("AHPOP", result[0].CompanyName);
+            Assert.Contains("AHPOP", result[0].CustomerName);
         }
 
         [Fact]
@@ -51,8 +51,8 @@ namespace SalesDatePrediction.Tests.handlers
             // Arrange
             var customers = new List<CustomerDto>
             {
-                new CustomerDto { CustId = 1, CompanyName = "Customer A" },
-                new CustomerDto { CustId = 2, CompanyName = "Customer B" }
+                new CustomerDto { CustId = 1, CustomerName = "Customer A" },
+                new CustomerDto { CustId = 2, CustomerName = "Customer B" }
             };
 
             _customerRepositoryMock

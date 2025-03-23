@@ -21,9 +21,9 @@ namespace SalesDatePrediction.Application.Customers.Queries
         public async Task<List<CustomerDto>> Handle(GetCustomersWithOrderInfoQuery request, CancellationToken cancellationToken)
         {
             var customers = await _customerRepository.GetCustomerOrderInfoAsync();
-            if (!string.IsNullOrEmpty(request.CompanyName))
+            if (!string.IsNullOrEmpty(request.CustomerName))
             {
-                customers = customers.Where(c => c.CompanyName.Contains(request.CompanyName)).ToList();
+                customers = customers.Where(c => c.CustomerName.Contains(request.CustomerName)).ToList();
             }
             return customers;
         }

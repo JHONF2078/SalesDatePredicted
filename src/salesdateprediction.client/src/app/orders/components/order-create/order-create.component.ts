@@ -40,7 +40,7 @@ export class OrderCreateComponent {
     private snackBar: MatSnackBar
   ) {
 
-    this.customerName = data?.salesDatePrediction?.companyName;
+    this.customerName = data?.salesDatePrediction?.customerName;
 
     this.orderForm = this.fb.group({
       empId: [data?.order?.empId || '', [Validators.required]],

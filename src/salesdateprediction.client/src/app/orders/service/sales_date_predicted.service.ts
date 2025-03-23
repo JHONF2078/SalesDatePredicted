@@ -32,7 +32,7 @@ export class SalesDatePredictedService {
    */
   searchSalesDatePredictions(companyName: string): Observable<SalesDatePrediction[]> {
     console.log(companyName);
-    const url = `${this.apiUrl}?companyName=${encodeURIComponent(companyName)}`;
+    const url = `${this.apiUrl}?customerName=${encodeURIComponent(companyName)}`;
     return this.http.get<SalesDatePrediction[]>(url);
   }
 

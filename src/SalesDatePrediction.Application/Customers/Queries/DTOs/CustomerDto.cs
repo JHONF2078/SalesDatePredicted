@@ -9,7 +9,7 @@ namespace SalesDatePrediction.Application.Customers.Queries.DTOs
     public class CustomerDto
     {
         public int CustId { get; set; }
-        public string? CompanyName { get; set; }
+        public string? CustomerName { get; set; }
         public DateTime? LastOrderDate { get; set; }
         public DateTime? PossibleNextOrderDate { get; set; }
     }

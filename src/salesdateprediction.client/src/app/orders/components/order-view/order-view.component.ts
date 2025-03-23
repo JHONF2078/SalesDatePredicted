@@ -41,7 +41,7 @@ export class OrderViewComponent {
     @Inject(MAT_DIALOG_DATA) public data: { customerOrders: ICustomerOrders; salesDatePrediction: SalesDatePrediction },
     private ordersService: OrdersService,
     private router: Router) {
-    this.customerName = data?.salesDatePrediction?.companyName;
+    this.customerName = data?.salesDatePrediction?.customerName;
     this.custId = data?.salesDatePrediction?.custId;
   }
 

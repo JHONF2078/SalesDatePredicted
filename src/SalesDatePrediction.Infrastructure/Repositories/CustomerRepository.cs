@@ -65,7 +65,7 @@ namespace SalesDatePrediction.Infrastructure.Repositories
                         result.Add(new CustomerDto
                         {
                             CustId = reader.GetInt32(0),
-                            CompanyName = reader.GetString(1),
+                            CustomerName = reader.GetString(1),
                             LastOrderDate = reader.IsDBNull(2) ? (DateTime?)null : reader.GetDateTime(2),
                             PossibleNextOrderDate = reader.IsDBNull(3) ? (DateTime?)null : reader.GetDateTime(3)
                         });

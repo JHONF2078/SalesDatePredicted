@@ -38,7 +38,7 @@ export class DatePredicionListComponent implements OnInit, OnDestroy, AfterViewI
   @ViewChild(MatSort) order!: MatSort;
   @ViewChild(MatPaginator) pagination!: MatPaginator;
 
-  displayedColumns: string[] = ['companyName', 'lastOrderDate', 'possibleNextOrderDate', 'actions']; // Columnas mostradas en la tabla
+  displayedColumns: string[] = ['customerName', 'lastOrderDate', 'possibleNextOrderDate', 'actions']; // Columnas mostradas en la tabla
 
   constructor(private salesDatePredictedService: SalesDatePredictedService,
     private ordersService: OrdersService, private router: Router, private dialog: MatDialog) { }

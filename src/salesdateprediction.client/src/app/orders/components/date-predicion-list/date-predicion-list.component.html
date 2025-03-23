@@ -13,9 +13,9 @@
 <!-- Contenedor para la tabla y el botón -->
 <div class="table-container">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-    <ng-container matColumnDef="companyName">
+    <ng-container matColumnDef="customerName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
-      <td mat-cell *matCellDef="let salesDatePredictions"> {{salesDatePredictions.companyName}} </td>
+      <td mat-cell *matCellDef="let salesDatePredictions"> {{salesDatePredictions.customerName}} </td>
     </ng-container>
 
     <ng-container matColumnDef="lastOrderDate">

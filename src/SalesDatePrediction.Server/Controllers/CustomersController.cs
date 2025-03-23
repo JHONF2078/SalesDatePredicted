@@ -19,9 +19,9 @@ namespace SalesDatePrediction.Api.Controllers
         }
 
         [HttpGet("WithOrderInfo")]
-        public async Task<ActionResult<List<CustomerDto>>> GetCustomersWithOrderInfo([FromQuery] string? companyName)
+        public async Task<ActionResult<List<CustomerDto>>> GetCustomersWithOrderInfo([FromQuery] string? customerName)
         {
-            var customers = await _mediator.Send(new GetCustomersWithOrderInfoQuery(companyName));
+            var customers = await _mediator.Send(new GetCustomersWithOrderInfoQuery(customerName));
             return Ok(customers);
         }
     }
