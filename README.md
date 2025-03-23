@@ -5,18 +5,19 @@ Esta aplicacion permite visualizar clientes con información de órdenes, predec
 
 ---
 
-## 🛠️ Build y ejecución del proyecto
+##  Build y ejecución del proyecto
 
-### 🔧 Requisitos
+###  Requisitos
 
 - .NET 8 SDK
 - Node.js 20+
 - Angular CLI 19+
 - SQL Server
 
-### 📦 Configuración
+###  Configuración
 
 1. Ejecutar el script de base de datos (`DBSetup.sql`) en SQL Server.
+   - Recuerda cambiar la cadena de conexión a la bases de datos en el archivo appsettings.json
 2. Abrir la solución en Visual Studio.
 3. Configurar los proyectos de inicio:
    - `SalesDatePrediction.Server`
@@ -34,7 +35,7 @@ Esta aplicacion permite visualizar clientes con información de órdenes, predec
 
 ---
 
-## 🧪 Pruebas
+##  Pruebas
 
 Las pruebas se realizaron con **xUnit**, ubicadas en la carpeta de pruebas dentro de la solución. Para ejecutarlas:
 
@@ -45,7 +46,7 @@ Las pruebas se realizaron con **xUnit**, ubicadas en la carpeta de pruebas dentr
 
 ---
 
-## ✨ Tecnologías y patrones utilizados
+##  Tecnologías y patrones utilizados
 
 - **Backend**: .NET 8, ASP.NET Core
 - **Frontend**: Angular 19, Angular Material, componentes standalone, D3.js
@@ -55,7 +56,7 @@ Las pruebas se realizaron con **xUnit**, ubicadas en la carpeta de pruebas dentr
 
 ---
 
-## 📁 Arquitectura por capas
+##  Arquitectura por capas
 
 1. **SalesDatePrediction.Application**: Lógica de negocio y casos de uso (CQRS, DTOs, Handlers).
 2. **SalesDatePrediction.Domain**: Entidades del dominio y contratos.
