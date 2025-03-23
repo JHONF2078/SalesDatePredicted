@@ -1,7 +1,7 @@
 # SalesDatePrediction
 
 
-Esta aplicacionp ermite visualizar clientes con información de órdenes, predecir la fecha de la proxima orden  y graficar datos con D3.js.
+Esta aplicacion permite visualizar clientes con información de órdenes, predecir la fecha de la proxima orden  y graficar datos con D3.js.
 
 ---
 
