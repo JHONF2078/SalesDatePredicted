@@ -53,20 +53,20 @@ export class OrderCreateComponent {
       requiredDate: [data?.order?.requiredDate || '', [Validators.required]],
       shippedDate: [data?.order?.shippedDate || '', [Validators.required]],
       freight: [
-        data?.order?.freight || 0,
+        data?.order?.freight,
         [Validators.required, Validators.min(0)]
       ],
       product: [data?.order?.orderDetail?.productId || '', [Validators.required]],
       unitPrice: [
-        data?.order?.orderDetail?.unitPrice || 0,
+        data?.order?.orderDetail?.unitPrice,
         [Validators.required, Validators.min(0.01)]
       ],
       qty: [
-        data?.order?.orderDetail?.qty || 0,
+        data?.order?.orderDetail?.qty,
         [Validators.required, Validators.min(1)]
       ],
       discount: [
-        data?.order?.orderDetail?.discount || 0,
+        data?.order?.orderDetail?.discount,
         [Validators.required, discountRangeValidator]
       ],
     });

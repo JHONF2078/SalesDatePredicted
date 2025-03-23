@@ -3,7 +3,7 @@ import { MATERIAL_IMPORTS } from '../../../material/material.component';
 import { Subscription } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { CommonModule } from '@angular/common';
 import { OrdersService } from '../../service/orders.service';
 import { ICustomerOrders } from '../../interface/customer';
@@ -11,12 +11,19 @@ import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SalesDatePrediction } from '../../interface/orders-date-prediction';
 
+export class MyCustomPaginatorIntl extends MatPaginatorIntl {
+  override itemsPerPageLabel = 'Rows per page';
+}
+
 @Component({
   selector: 'app-order-view',
   standalone: true,
   imports: [CommonModule, ...MATERIAL_IMPORTS],
   templateUrl: './order-view.component.html',
-  styleUrl: './order-view.component.scss'
+  styleUrl: './order-view.component.scss',
+  providers: [
+    { provide: MatPaginatorIntl, useClass: MyCustomPaginatorIntl }
+  ]
 })
 export class OrderViewComponent {
   private subscriptions: Subscription = new Subscription();
